@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedDog.Search", "..\RedDog.Search\src\RedDog.Search\RedDog.Search.csproj", "{F3CDC9C8-A12F-429C-A9DA-FB57A9619CCD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureProvider", "AzureProvider\AzureProvider.csproj", "{DA4BFBE1-6B7A-488A-8819-FE35596AFDC0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{06EC3B6F-716F-4F89-BB75-1FF02C188CBB}"
+	ProjectSection(SolutionItems) = preProject
+		..\Library\Sitecore.ContentSearch.dll = ..\Library\Sitecore.ContentSearch.dll
+		..\Library\Sitecore.Kernel.dll = ..\Library\Sitecore.Kernel.dll
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoSite", "DemoSite\DemoSite.csproj", "{FBF195B0-09FC-406D-9E2B-49BE1347FD1F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F3CDC9C8-A12F-429C-A9DA-FB57A9619CCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3CDC9C8-A12F-429C-A9DA-FB57A9619CCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3CDC9C8-A12F-429C-A9DA-FB57A9619CCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3CDC9C8-A12F-429C-A9DA-FB57A9619CCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA4BFBE1-6B7A-488A-8819-FE35596AFDC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA4BFBE1-6B7A-488A-8819-FE35596AFDC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA4BFBE1-6B7A-488A-8819-FE35596AFDC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA4BFBE1-6B7A-488A-8819-FE35596AFDC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBF195B0-09FC-406D-9E2B-49BE1347FD1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBF195B0-09FC-406D-9E2B-49BE1347FD1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBF195B0-09FC-406D-9E2B-49BE1347FD1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBF195B0-09FC-406D-9E2B-49BE1347FD1F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
