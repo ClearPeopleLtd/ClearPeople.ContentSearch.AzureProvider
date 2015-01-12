@@ -1,0 +1,3 @@
+[submodule "RedDog.Search"]
+	path = RedDog.Search
+	url = https://github.com/ClearPeopleLtd/RedDog.Search
