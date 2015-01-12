@@ -8,50 +8,53 @@ using Sitecore.ContentSearch.Diagnostics;
 
 namespace AzureProvider
 {
-    public class AzureCrawler<T> : HierarchicalDataCrawler<T> where T :IHierarchicalIndexable
+    public class AzureCrawler : AbstractProviderCrawler
     {
         public override void Initialize(ISearchIndex index)
         {
-            base.Initialize(index);            
+            base.Initialize(index);
+            var msg = string.Format("[Index={0}] Initializing AzureSearchCrawler. DB:{1} / Root:{2}", index.Name, base.Database, base.Root);
+            CrawlingLog.Log.Info(msg, null);          
         }
-        protected override T GetIndexable(IIndexableId indexableId, System.Globalization.CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
+        
+        //protected override T GetIndexable(IIndexableId indexableId, System.Globalization.CultureInfo culture)
+        //{
+        //    return default(T);
+        //}
 
-        protected override IEnumerable<T> GetIndexableChildren(T parent)
-        {
-            throw new NotImplementedException();
-        }
+        //protected override IEnumerable<T> GetIndexableChildren(T parent)
+        //{
+        //    return (IEnumerable<T>) default(T);
+        //}
 
-        protected override IEnumerable<IIndexableId> GetIndexableChildrenIds(T parent)
-        {
-            throw new NotImplementedException();
-        }
+        //protected override IEnumerable<IIndexableId> GetIndexableChildrenIds(T parent)
+        //{
+        //    return null;
+        //}
 
-        public override T GetIndexableRoot()
-        {
-            throw new NotImplementedException();
-        }
+        //public override T GetIndexableRoot()
+        //{
+        //    return default(T); ;
+        //}
 
-        protected override T GetIndexable(IIndexableUniqueId indexableUniqueId)
-        {
-            throw new NotImplementedException();
-        }
+        //protected override T GetIndexable(IIndexableUniqueId indexableUniqueId)
+        //{
+        //    return default(T); ;
+        //}
 
-        protected override T GetIndexableAndCheckDeletes(IIndexableUniqueId indexableUniqueId)
-        {
-            throw new NotImplementedException();
-        }
+        //protected override T GetIndexableAndCheckDeletes(IIndexableUniqueId indexableUniqueId)
+        //{
+        //    return default(T); ;
+        //}
 
-        protected override IEnumerable<IIndexableUniqueId> GetIndexablesToUpdateOnDelete(IIndexableUniqueId indexableUniqueId)
-        {
-            throw new NotImplementedException();
-        }
+        //protected override IEnumerable<IIndexableUniqueId> GetIndexablesToUpdateOnDelete(IIndexableUniqueId indexableUniqueId)
+        //{
+        //    return null;
+        //}
 
-        protected override bool IndexUpdateNeedDelete(T indexable)
-        {
-            throw new NotImplementedException();
-        }
+        //protected override bool IndexUpdateNeedDelete(T indexable)
+        //{
+        //    return true;
+        //}
     }
 }

@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sitecore.ContentSearch;
+using Sitecore.ContentSearch.Linq.Common;
+using Sitecore.Data.Items;
+using IndexOperation = RedDog.Search.Model.IndexOperation;
 
 namespace AzureProvider
 {
@@ -11,27 +14,38 @@ namespace AzureProvider
     {
         public void Add(IIndexable indexable, IProviderUpdateContext context, ProviderIndexConfiguration indexConfiguration)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void Delete(IIndexableUniqueId indexableUniqueId, IProviderUpdateContext context)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void Delete(IIndexableId id, IProviderUpdateContext context)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void Delete(IIndexable indexable, IProviderUpdateContext context)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void Update(IIndexable indexable, IProviderUpdateContext context, ProviderIndexConfiguration indexConfiguration)
         {
-            throw new NotImplementedException();
+            var doc = GetDocument(indexable);
+            context.UpdateDocument(doc, null,new DefaultDocumentMapperFactoryRuleExecutionContext());
         }
+        protected virtual Dictionary<string, object> GetDocument(IIndexable indexable)
+        {
+            var item = (Item)(indexable as SitecoreIndexableItem);
+            var doc = new Dictionary<string, object>();
+            doc.Add("id",item.ID.ToShortID().ToString());
+            doc.Add("name", item.Name);
+            doc.Add("path", item.Paths.Path);
+            return doc;
+        }
+        
     }
 }

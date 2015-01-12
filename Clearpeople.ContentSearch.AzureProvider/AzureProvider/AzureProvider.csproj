@@ -36,6 +36,10 @@
     <Reference Include="Sitecore.ContentSearch.Linq">
       <HintPath>..\..\Library\Sitecore.ContentSearch.Linq.dll</HintPath>
     </Reference>
+    <Reference Include="Sitecore.Kernel, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Library\Sitecore.Kernel.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,7 +51,8 @@
   <ItemGroup>
     <Compile Include="AzureCrawler.cs" />
     <Compile Include="AzureIndexOperations.cs" />
-    <Compile Include="AzureProviderUpdateContext .cs" />
+    <Compile Include="AzureUpdateContext .cs" />
+    <Compile Include="AzureSearchConfiguration.cs" />
     <Compile Include="AzureSearchIndex.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
