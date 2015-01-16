@@ -1,3 +1,6 @@
 [submodule "RedDog.Search"]
 	path = RedDog.Search
 	url = https://github.com/ClearPeopleLtd/RedDog.Search
+[submodule "LinqToAzure"]
+	path = LinqToAzure
+	url = https://github.com/ClearPeopleLtd/LinqToAzure.git

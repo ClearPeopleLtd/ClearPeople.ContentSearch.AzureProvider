@@ -11,6 +11,7 @@ namespace AzureProvider
 {
     public class AzureFieldConfiguration : AbstractSearchFieldConfiguration
     {
+        public string FieldNameFormat { get; set; }
         public AzureFieldConfiguration()
         {
         }
@@ -30,9 +31,14 @@ namespace AzureProvider
       : this(fieldName, (string) null, fieldTypeName, attributes, configNode)
     {
     }
+        public AzureFieldConfiguration(AzureFieldConfiguration configuration)
+            : this(configuration.FieldTypeName, configuration.FieldID, configuration.Attributes, null)
+        {
+        }
 
         private void Initialize(IDictionary<string, string> attributes)
         {
+            FieldNameFormat = "{0}";
             foreach (var attribute in attributes)
             {
                 bool tmpbool;
@@ -72,9 +78,40 @@ namespace AzureProvider
                     case "analyzer":
                         AzureField.Analyzer = attribute.Value;
                         break;
+                    case "fieldnameformat":
+                        FieldNameFormat = attribute.Value;
+                        break;
                 }
             }
+        }        
+        public IndexField AzureField { get; set; }
+       public string FormatFieldName(string fieldName, ISearchIndexSchema schema, string cultureCode)
+        {
+            return this.FormatFieldName(fieldName, schema, cultureCode);
         }
-        private IndexField AzureField { get; set; }
+                
+
+        //public string FormatFieldName(string fieldName, ISearchIndexSchema schema, string cultureCode,
+        //    string defaultCulture)
+        //{
+        //    fieldName = fieldName.Replace(" ", "_").ToLowerInvariant();
+        //    string empty = string.Empty;
+        //    string str = (!string.IsNullOrEmpty(cultureCode) ? cultureCode : defaultCulture);
+        //    if (str == "iv")
+        //    {
+        //        str = defaultCulture;
+        //    }
+        //    if (!string.IsNullOrEmpty(cultureCode) && !string.IsNullOrEmpty(this.CultureFormat) &&
+        //        !defaultCulture.StartsWith(str))
+        //    {
+        //        empty = this.CultureFormat;
+        //    }
+        //    string str1 = string.Concat(fieldName, string.Format(empty, string.Empty, str));
+        //    if (schema.AllFieldNames.Contains(str1))
+        //    {
+        //        return str1;
+        //    }
+        //    return string.Format(string.Concat(this.FieldNameFormat, empty), fieldName, str);
+        //}
     }
 }

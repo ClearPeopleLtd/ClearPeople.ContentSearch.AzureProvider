@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LinqToAzure;
+using RedDog.Search.Model;
 using Sitecore.ContentSearch;
 using Sitecore.ContentSearch.Abstractions;
 using Sitecore.ContentSearch.Diagnostics;
@@ -34,15 +36,16 @@ namespace AzureProvider
         }
 
         public IQueryable<TItem> GetQueryable<TItem>(params Sitecore.ContentSearch.Linq.Common.IExecutionContext[] executionContexts)
-        {
-            //LinqToAzureIndex linqToSolrIndex = new LinqToAzureIndex<TItem>(this, executionContexts);
-            //if (this.contentSearchSettings.EnableSearchDebug())
-            //{
-            //    ((IHasTraceWriter)linqToSolrIndex).TraceWriter = new LoggingTraceWriter(SearchLog.Log);
-            //}
-            //QueryGlobalFiltersArgs queryGlobalFiltersArg = new QueryGlobalFiltersArgs(linqToSolrIndex.GetQueryable(), typeof(TItem), executionContexts.ToList<IExecutionContext>());
-            //this.Index.Locator.GetInstance<ICorePipeline>().Run("contentSearch.getGlobalLinqFilters", queryGlobalFiltersArg);
-            //return (IQueryable<TItem>)queryGlobalFiltersArg.Query;
+        {            
+            var linqToSolrIndex = new LinqToAzureIndex<TItem>(this, executionContexts);
+            if (this.contentSearchSettings.EnableSearchDebug())
+            {
+                ((IHasTraceWriter)linqToSolrIndex).TraceWriter = new LoggingTraceWriter(SearchLog.Log);
+            }
+            QueryGlobalFiltersArgs queryGlobalFiltersArg = new QueryGlobalFiltersArgs(linqToSolrIndex.GetQueryable(), typeof(TItem), executionContexts.ToList<IExecutionContext>());
+            this.Index.Locator.GetInstance<ICorePipeline>().Run("contentSearch.getGlobalLinqFilters", queryGlobalFiltersArg);
+            return (IQueryable<TItem>)queryGlobalFiltersArg.Query;
+            
             return null;
         }
 

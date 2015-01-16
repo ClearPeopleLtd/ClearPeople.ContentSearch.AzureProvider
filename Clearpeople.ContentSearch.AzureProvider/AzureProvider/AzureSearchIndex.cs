@@ -30,7 +30,7 @@ namespace AzureProvider
             get { return _queryClient; }
         }
 
-        private AbstractFieldNameTranslator fieldNameTranslator;
+        private AzureFieldTranslator fieldNameTranslator;
         private IndexQueryClient _queryClient;
         private AzureSearchIndexSummary summary;
         private string key = "CDAC986F23CE5EFBD577044A040B0850";
