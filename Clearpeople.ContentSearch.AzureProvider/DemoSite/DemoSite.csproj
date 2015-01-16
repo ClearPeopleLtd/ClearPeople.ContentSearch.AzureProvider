@@ -66,8 +66,19 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Config\Include\Azure.Search.config" />
+    <Content Include="App_Config\Include\Sitecore.ContentSearch.Azure.Index.Master.config" />
+    <Content Include="App_Config\Include\Sitecore.ContentSearch.Azure.DefaultIndexConfiguration.config" />
+    <None Include="App_Config\Include\Sitecore.ContentSearch.Azure.Index.Core.config.disabled" />
+    <None Include="App_Config\Include\Sitecore.ContentSearch.Azure.Index.Master.config.disabled" />
+    <None Include="App_Config\Include\Sitecore.ContentSearch.Azure.Index.Web.config.disabled" />
     <None Include="Properties\PublishProfiles\Local AzureSearch.pubxml" />
+    <None Include="web.config.tmp" />
+    <None Include="web.config.Debug.tmp">
+      <DependentUpon>web.config.tmp</DependentUpon>
+    </None>
+    <None Include="web.config.Release.tmp">
+      <DependentUpon>web.config.tmp</DependentUpon>
+    </None>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

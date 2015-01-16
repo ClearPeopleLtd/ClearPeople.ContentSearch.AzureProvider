@@ -14,9 +14,14 @@ namespace AzureProvider
         {
             base.Initialize(index);
             var msg = string.Format("[Index={0}] Initializing AzureSearchCrawler. DB:{1} / Root:{2}", index.Name, base.Database, base.Root);
-            CrawlingLog.Log.Info(msg, null);          
+            CrawlingLog.Log.Info(msg, null);
         }
-        
+        public void Delete(IIndexableId id, IProviderUpdateContext context)
+        {
+            CrawlingLog.Log.Debug("Deleting ID " + id.Value.ToString());
+            context.Delete(id);
+        }
+
         //protected override T GetIndexable(IIndexableId indexableId, System.Globalization.CultureInfo culture)
         //{
         //    return default(T);

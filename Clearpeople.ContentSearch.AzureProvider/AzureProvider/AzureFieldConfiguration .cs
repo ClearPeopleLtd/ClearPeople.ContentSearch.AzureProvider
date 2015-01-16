@@ -1,0 +1,80 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml;
+using RedDog.Search.Model;
+using Sitecore.ContentSearch;
+
+namespace AzureProvider
+{
+    public class AzureFieldConfiguration : AbstractSearchFieldConfiguration
+    {
+        public AzureFieldConfiguration()
+        {
+        }
+
+        public AzureFieldConfiguration(string fieldName, string fieldID, string fieldTypeName, IDictionary<string, string> attributes, XmlNode configNode)
+        {
+            this.FieldName = fieldName;
+            this.FieldTypeName = fieldTypeName;
+            this.FieldID = fieldID;
+            Attributes = attributes;
+            AzureField = new IndexField();
+            Initialize(attributes);
+        }
+
+        [Obsolete("Use AbstractSearchFieldConfiguration(string, string, string, IDictionary<string, string>, XmlNode) constructor instead")]
+        public AzureFieldConfiguration(string fieldName, string fieldTypeName, IDictionary<string, string> attributes, XmlNode configNode)
+      : this(fieldName, (string) null, fieldTypeName, attributes, configNode)
+    {
+    }
+
+        private void Initialize(IDictionary<string, string> attributes)
+        {
+            foreach (var attribute in attributes)
+            {
+                bool tmpbool;
+                switch (attribute.Key.ToLowerInvariant())
+                {
+                    case "type":
+                        AzureField.Type = attribute.Value;
+                        break;
+                    case "searchable":
+                        if (Boolean.TryParse(attribute.Value, out tmpbool))
+                            AzureField.Searchable = tmpbool;
+                        break;
+                    case "filterable":
+                        if (Boolean.TryParse(attribute.Value, out tmpbool))
+                            AzureField.Filterable = tmpbool;
+                        break;
+                    case "sortable":
+                        if (Boolean.TryParse(attribute.Value, out tmpbool))
+                            AzureField.Sortable = tmpbool;
+                        break;
+                    case "facetable":
+                        if (Boolean.TryParse(attribute.Value, out tmpbool))
+                            AzureField.Facetable = tmpbool;
+                        break;
+                    case "Suggestions":
+                        if (Boolean.TryParse(attribute.Value, out tmpbool))
+                            AzureField.Suggestions = tmpbool;
+                        break;
+                    case "key":
+                        if (Boolean.TryParse(attribute.Value, out tmpbool))
+                            AzureField.Key = tmpbool;
+                        break;
+                    case "retrievable":
+                        if (Boolean.TryParse(attribute.Value, out tmpbool))
+                            AzureField.Retrievable = tmpbool;
+                        break;
+                    case "analyzer":
+                        AzureField.Analyzer = attribute.Value;
+                        break;
+                }
+            }
+        }
+        private IndexField AzureField { get; set; }
+    }
+}

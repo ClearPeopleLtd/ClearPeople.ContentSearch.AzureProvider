@@ -30,15 +30,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MoreLinq">
+      <HintPath>..\packages\morelinq.1.1.0\lib\net35\MoreLinq.dll</HintPath>
+    </Reference>
     <Reference Include="Sitecore.ContentSearch">
       <HintPath>..\..\Library\Sitecore.ContentSearch.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Sitecore.ContentSearch.Linq">
       <HintPath>..\..\Library\Sitecore.ContentSearch.Linq.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Sitecore.Kernel, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Library\Sitecore.Kernel.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -50,10 +57,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AzureCrawler.cs" />
+    <Compile Include="AzureDocumentBuilder.cs" />
+    <Compile Include="AzureFieldConfiguration .cs" />
+    <Compile Include="AzureIndexConfiguration.cs" />
     <Compile Include="AzureIndexOperations.cs" />
+    <Compile Include="AzureIndexSchema.cs" />
+    <Compile Include="AzureSearchContext.cs" />
+    <Compile Include="AzureSearchIndexSummary.cs" />
     <Compile Include="AzureUpdateContext .cs" />
     <Compile Include="AzureSearchConfiguration.cs" />
     <Compile Include="AzureSearchIndex.cs" />
+    <Compile Include="LinqToAzureIndex.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +75,10 @@
       <Project>{f3cdc9c8-a12f-429c-a9da-fb57a9619ccd}</Project>
       <Name>RedDog.Search</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
