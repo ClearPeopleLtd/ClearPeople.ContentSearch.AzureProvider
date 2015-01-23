@@ -133,7 +133,7 @@ namespace AzureProvider
                 {
                     throw new ArgumentNullException("value");
                 }
-                this.fieldNameTranslator = value;
+                this.fieldNameTranslator = (AzureFieldTranslator)value;
             }
         }
 
@@ -147,6 +147,11 @@ namespace AzureProvider
             var exists = Exists();
             if (!(exists.IsCompleted && exists.Result.IsSuccess))
                 CreateAsync();
+            ISearchIndexInitializable indexDocumentPropertyMapper = ((AzureIndexConfiguration)this.Configuration).IndexDocumentPropertyMapper as ISearchIndexInitializable;
+            if (indexDocumentPropertyMapper != null)
+            {
+                indexDocumentPropertyMapper.Initialize(this);
+            }
         }
 
         //public Sitecore.ContentSearch.Abstractions.IObjectLocator Locator { get; set; }

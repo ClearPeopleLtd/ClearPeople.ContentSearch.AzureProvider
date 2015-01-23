@@ -49,11 +49,11 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AzureCrawler.cs" />
@@ -64,11 +64,14 @@
     <Compile Include="AzureIndexConfiguration.cs" />
     <Compile Include="AzureIndexOperations.cs" />
     <Compile Include="AzureIndexSchema.cs" />
+    <Compile Include="AzureQueryResults.cs" />
     <Compile Include="AzureSearchContext.cs" />
     <Compile Include="AzureSearchIndexSummary.cs" />
+    <Compile Include="AzureSearchResult.cs" />
     <Compile Include="AzureUpdateContext .cs" />
     <Compile Include="AzureSearchConfiguration.cs" />
     <Compile Include="AzureSearchIndex.cs" />
+    <Compile Include="DefaultAzureDocumentTypeMapper.cs" />
     <Compile Include="LinqToAzureIndex.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TemplateResolver.cs" />
